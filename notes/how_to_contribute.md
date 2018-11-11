@@ -75,6 +75,11 @@ $ rustup default local_rust
 $  python x.py test --stage 0
 ```
 
+### Debug 编译器
+
+[参考](https://rust-lang-nursery.github.io/rustc-guide/compiler-debugging.html)
+
+
 ### 提交PR
 
 需要使用`r?`来让机器人@rust-highfive来指定review的人。比如：
