@@ -20,34 +20,68 @@ $ mv config.toml.example config.toml
 compiler-docs = false
 # Indicate whether submodules are managed and updated automatically.
 submodules = false
+# 使用nightly
+channel = "nightly"
 ```
-推荐修改上面两个配置，以及debug相关配置，都设置为true。
+推荐修改上面三个配置，以及debug相关配置，都设置为true。
+
+然后执行:
+
+```
+$ ./configuration
+```
 
 开始构建：
 
 ```rust
 # build the entire compiler
 python x.py build
-
-# build all documentation
-python x.py doc
-
-# run all test suites
-python x.py test
-
-# build only the standard library
-python x.py build src/libstd
-
-# test only one particular test suite
-python x.py test src/test/rustdoc
-
-# build only the stage0 libcore library
-python x.py build src/libcore --stage 0
 ```
 
+### 构建过程
 
+要经历三个阶段：
+
+- stage 0
+- stage 1
+- stage 2
+
+推荐步骤：
+
+- `./x.py check`
+- `--keep-stage`
+
+[构建参考](https://rust-lang-nursery.github.io/rustc-guide/how-to-build-and-run.html#workflow)
+
+使用rustup将本地编译版本的Rust加到toolchain中：
+
+```rust
+$ rustup toolchain link local_rust build/x86_64-apple-darwin/stage0
+$ rustup default local_rust
+```
+
+语法为：`rustup toolchain link <name> build/<host-triple>/stage0 `
+
+其中，`<host-triple>`就是上面示例中的`x86_64-apple-darwin`
+
+### 在本地测试
+
+```rust
+$  python x.py test --stage 0
+```
+
+### 提交PR
+
+需要使用`r?`来让机器人@rust-highfive来指定review的人。比如：
+
+```rust
+r?@steveklabnik
+```
+
+@rust-highfive就会自动指定steveklabnik来review这个PR。
 
 ### 参考资料
 
+- [Compiler Guide](https://rust-lang-nursery.github.io/rustc-guide/how-to-build-and-run.html)
 - [CONTRIBUTING.md](https://github.com/rust-lang/rust/blob/master/CONTRIBUTING.md)
 - [slides](http://rust-meetup-paris.github.io/Talks/how_to_contribute/index.html)
