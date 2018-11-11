@@ -51,6 +51,11 @@ python x.py build
 - `./x.py check`
 - `--keep-stage`
 
+```rust
+$ ./x.py build -i --stage 1 src/libstd
+$ ./x.py build -i --stage 1 src/libstd --keep-stage 1
+```
+
 [构建参考](https://rust-lang-nursery.github.io/rustc-guide/how-to-build-and-run.html#workflow)
 
 使用rustup将本地编译版本的Rust加到toolchain中：
