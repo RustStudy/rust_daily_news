@@ -1,3 +1,5 @@
+![img](img/rust_news.png)
+
 # Rust每日新闻
 
 订阅地址：
