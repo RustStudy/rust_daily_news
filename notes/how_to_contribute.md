@@ -62,16 +62,16 @@ $ ./x.py build -i --stage 1 src/libstd --keep-stage 1
 $ git submodule update --init
 ```
 
-[构建参考](https://rust-lang-nursery.github.io/rustc-guide/how-to-build-and-run.html#workflow)
+[构建参考](https://rust-lang.github.io/rustc-guide/how-to-build-and-run.html)
 
 使用rustup将本地编译版本的Rust加到toolchain中：
 
 ```rust
-$ rustup toolchain link local_rust build/x86_64-apple-darwin/stage0
-$ rustup default local_rust
+$ rustup toolchain link local build/x86_64-apple-darwin/stage2
+$ rustup default local
 ```
 
-语法为：`rustup toolchain link <name> build/<host-triple>/stage0 `
+语法为：`rustup toolchain link <name> build/<host-triple>/stage2 `
 
 其中，`<host-triple>`就是上面示例中的`x86_64-apple-darwin`
 
@@ -84,6 +84,12 @@ $  python x.py test --stage 0
 ### Debug 编译器
 
 [参考](https://rust-lang-nursery.github.io/rustc-guide/compiler-debugging.html)
+
+测试代码生成文档
+
+```
+$ RUST_LOG=debug rustdoc +local src/test/rustdoc-ui/intra-link-span-ice-55723.rs
+```
 
 
 ### 提交PR
@@ -101,3 +107,9 @@ r?@steveklabnik
 - [Compiler Guide](https://rust-lang-nursery.github.io/rustc-guide/how-to-build-and-run.html)
 - [CONTRIBUTING.md](https://github.com/rust-lang/rust/blob/master/CONTRIBUTING.md)
 - [slides](http://rust-meetup-paris.github.io/Talks/how_to_contribute/index.html)
+
+Debug命令：
+
+```
+$ RUST_LOG=rustdoc::passes rustdoc +local src/test/rustdoc-ui/intra-link-span-ice-55723.rs
+```
