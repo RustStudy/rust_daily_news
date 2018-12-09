@@ -10,7 +10,3 @@
 - [Rust.cc论坛](https://rust.cc)
 
 欢迎通过issues投稿。
-
-# Rust国内书籍资料记录
-
-- [RustBooksChina](https://github.com/RustStudy/RustBooksChina)
