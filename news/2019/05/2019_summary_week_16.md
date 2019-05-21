@@ -446,6 +446,8 @@ fn main() {
 
 ### multiqueue2 - 支持广播能力的 mpmc 管道
 
+MultiQueue是由Sam Schetterer开发的mpmc库，但有一段时间没有更新。MultiQueue2是另外一个人觉得它非常有用，就接手开发了，修复了一些过时的API和bug，并且升级到2018 edition。基于crossbeam和futures 0.1实现。
+
 [Repo](https://github.com/abbychau/multiqueue)
 
 ### 使用gir crate生成GNOME库
